@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Подтверждение Email - Health Blog{% endblock %}
+
+{% block content %}
+    <h2>Поздравляем!</h2>
+    <p>Ваш email успешно подтверждён. Теперь вы можете пользоваться всеми функциями сайта.</p>
+    <a href="{% url 'home' %}">Вернуться на главную</a>
+{% endblock %}

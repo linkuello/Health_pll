@@ -39,19 +39,24 @@ def get_articles(request):
 def get_article_by_id(request, id):
     try:
         article = Article.objects.get(id=id)
-        if not article.free and not request.user.is_authenticated:
-            return JsonResponse({"status": "error", "message": "Требуется авторизация для просмотра этой статьи"}, status=403)
-        return JsonResponse({"status": "success", "data": {
-            'id': article.id,
-            'title': article.title,
-            'author': article.author,
-            'publication_date': article.publication_date,
-            'tags': article.tags,
-            'content': article.content,
-            'free': article.free
-        }})
+        return JsonResponse({
+            "status": "success",
+            "data": {
+                'id': article.id,
+                'title': article.title,
+                'author': article.author,
+                'publication_date': article.publication_date,
+                'tags': article.tags,
+                'content': article.content,
+                'free': article.free
+            }
+        })
     except Article.DoesNotExist:
         return JsonResponse({"status": "error", "message": "Article not found"}, status=404)
+
+
+def home(request):
+    return render(request, 'main/home.html')  # Убедитесь, что файл home.html существует
 
 
 def contact(request):
@@ -72,11 +77,11 @@ def contact(request):
 
         return JsonResponse({"status": "success", "message": "Ваше сообщение успешно отправлено."})
     
-    return JsonResponse({"status": "error", "message": "Invalid request method"}, status=400)
+    return JsonResponse({"status": "error", "message": "Invalid request method"}, status=405)
 
 
 def about(request):
-    return JsonResponse({"status": "success", "data": {"content": "Информация о нас"}})
+    return render(request, 'main/about.html')
 
 def register(request):
     if request.method == 'POST':
