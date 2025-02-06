@@ -30,7 +30,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'adamkaliev.ertai5@gmail.com'
-EMAIL_HOST_PASSWORD = '12102006ertai55'
+EMAIL_HOST_PASSWORD = 'esmo aedf oodt gspy'
 
 DEFAULT_FROM_EMAIL = 'noreply@yourdomain.com'
 CONTACT_EMAIL = 'contact@yourdomain.com'
@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'rest_framework',
+    'accounts',
     'rest_framework.authtoken',
 
 
@@ -116,6 +117,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/

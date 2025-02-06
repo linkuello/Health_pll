@@ -1,0 +1,12 @@
+<!-- main/templates/main/article_list.html -->
+<h1>Все статьи</h1>
+<ul>
+  {% for article in articles %}
+    <li>{{ article.title }}</li>
+  {% endfor %}
+</ul>
+
+{% if not user.is_authenticated %}
+    <p>Для доступа ко всем статьям зарегистрируйтесь.</p>
+    <a href="{% url 'register' %}">Зарегистрироваться</a>
+{% endif %}
